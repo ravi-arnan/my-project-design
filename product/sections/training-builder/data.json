@@ -1,0 +1,432 @@
+{
+  "_meta": {
+    "models": {
+      "Training": "A structured learning program with slides, a quiz, rules page config, and settings. Displayed in the training list and edited in the builder.",
+      "Slide": "A single content unit within a training. Types: video, text, or question. Ordered sequentially.",
+      "Question": "A quiz question with answer options and a correct answer. Can be a quiz-level question or an inline slide question.",
+      "Department": "An organizational unit used for scoping training assignments."
+    },
+    "relationships": [
+      "Training has many Slide (ordered)",
+      "Training has many Question (quiz-level)",
+      "Training belongs to Department",
+      "Slide may contain one Question (for question-type slides)",
+      "Question has many AnswerOption"
+    ]
+  },
+  "departments": [
+    { "id": "dept-1", "name": "Operations" },
+    { "id": "dept-2", "name": "Sales" },
+    { "id": "dept-3", "name": "Engineering" },
+    { "id": "dept-4", "name": "Customer Support" }
+  ],
+  "trainings": [
+    {
+      "id": "trn-1",
+      "title": "Workplace Safety Fundamentals",
+      "description": "Covers essential workplace safety protocols including fire exits, equipment handling, and incident reporting procedures.",
+      "status": "published",
+      "category": "Compliance",
+      "departmentId": "dept-1",
+      "thumbnailUrl": null,
+      "estimatedDurationMinutes": 35,
+      "passingScore": 80,
+      "allowRetakes": true,
+      "maxAttempts": 3,
+      "timeLimitMinutes": 45,
+      "showResults": true,
+      "recurrence": { "enabled": true, "intervalType": "months", "intervalValue": 12 },
+      "passwordProtected": false,
+      "accessPassword": null,
+      "shareableLinkToken": "abc123-safety",
+      "linkVisibility": "link-only",
+      "rulesPage": {
+        "title": "Before You Begin",
+        "description": "This training covers critical safety procedures. Please complete it in a quiet environment without distractions.",
+        "customInstructions": "You must score at least 80% to pass. Failed attempts will be reported to your manager.",
+        "allowPause": false,
+        "mustCompleteInOneSitting": true,
+        "exitBehavior": "fail",
+        "lockQuizUntilSlidesComplete": true,
+        "requireMinimumVideoWatch": true,
+        "showEstimatedDuration": true,
+        "showPassingScore": true,
+        "showQuestionCount": true
+      },
+      "assignedCount": 142,
+      "completionRate": 87,
+      "lastUpdated": "2026-03-07T14:22:00Z",
+      "createdAt": "2025-11-15T09:00:00Z"
+    },
+    {
+      "id": "trn-2",
+      "title": "New Hire Onboarding — Q1 2026",
+      "description": "Welcome to the team! This training walks you through company values, benefits, tools, and your first-week checklist.",
+      "status": "published",
+      "category": "Onboarding",
+      "departmentId": null,
+      "thumbnailUrl": null,
+      "estimatedDurationMinutes": 60,
+      "passingScore": 70,
+      "allowRetakes": true,
+      "maxAttempts": null,
+      "timeLimitMinutes": null,
+      "showResults": true,
+      "recurrence": { "enabled": false, "intervalType": null, "intervalValue": null },
+      "passwordProtected": false,
+      "accessPassword": null,
+      "shareableLinkToken": null,
+      "linkVisibility": "private",
+      "rulesPage": {
+        "title": "Welcome!",
+        "description": "Take your time with this onboarding training. You can pause and resume at any point.",
+        "customInstructions": null,
+        "allowPause": true,
+        "mustCompleteInOneSitting": false,
+        "exitBehavior": "abandon",
+        "lockQuizUntilSlidesComplete": true,
+        "requireMinimumVideoWatch": false,
+        "showEstimatedDuration": true,
+        "showPassingScore": false,
+        "showQuestionCount": false
+      },
+      "assignedCount": 28,
+      "completionRate": 64,
+      "lastUpdated": "2026-03-01T10:45:00Z",
+      "createdAt": "2026-01-10T08:30:00Z"
+    },
+    {
+      "id": "trn-3",
+      "title": "Anti-Harassment Policy Training",
+      "description": "Mandatory training covering workplace harassment policies, reporting mechanisms, and bystander intervention strategies.",
+      "status": "draft",
+      "category": "Compliance",
+      "departmentId": null,
+      "thumbnailUrl": null,
+      "estimatedDurationMinutes": 25,
+      "passingScore": 90,
+      "allowRetakes": true,
+      "maxAttempts": 2,
+      "timeLimitMinutes": 30,
+      "showResults": false,
+      "recurrence": { "enabled": true, "intervalType": "months", "intervalValue": 6 },
+      "passwordProtected": false,
+      "accessPassword": null,
+      "shareableLinkToken": null,
+      "linkVisibility": "private",
+      "rulesPage": {
+        "title": "Important — Please Read",
+        "description": "This is a mandatory compliance training. Your responses are confidential but completion status is reported to HR.",
+        "customInstructions": "Answer honestly. There are no trick questions.",
+        "allowPause": false,
+        "mustCompleteInOneSitting": true,
+        "exitBehavior": "flag",
+        "lockQuizUntilSlidesComplete": true,
+        "requireMinimumVideoWatch": true,
+        "showEstimatedDuration": true,
+        "showPassingScore": true,
+        "showQuestionCount": false
+      },
+      "assignedCount": 0,
+      "completionRate": 0,
+      "lastUpdated": "2026-03-09T08:10:00Z",
+      "createdAt": "2026-03-05T11:00:00Z"
+    },
+    {
+      "id": "trn-4",
+      "title": "Product Knowledge: CRM Features",
+      "description": "Deep dive into the CRM module for the sales team — covers lead management, pipeline stages, and reporting dashboards.",
+      "status": "published",
+      "category": "Product",
+      "departmentId": "dept-2",
+      "thumbnailUrl": null,
+      "estimatedDurationMinutes": 40,
+      "passingScore": 75,
+      "allowRetakes": true,
+      "maxAttempts": null,
+      "timeLimitMinutes": null,
+      "showResults": true,
+      "recurrence": { "enabled": false, "intervalType": null, "intervalValue": null },
+      "passwordProtected": true,
+      "accessPassword": "sales2026",
+      "shareableLinkToken": "crm-sales-q1",
+      "linkVisibility": "link-only",
+      "rulesPage": {
+        "title": "CRM Training",
+        "description": "This training covers the CRM features you'll use daily. Screenshots and examples are from our live environment.",
+        "customInstructions": null,
+        "allowPause": true,
+        "mustCompleteInOneSitting": false,
+        "exitBehavior": "abandon",
+        "lockQuizUntilSlidesComplete": false,
+        "requireMinimumVideoWatch": false,
+        "showEstimatedDuration": true,
+        "showPassingScore": true,
+        "showQuestionCount": true
+      },
+      "assignedCount": 34,
+      "completionRate": 91,
+      "lastUpdated": "2026-02-20T16:30:00Z",
+      "createdAt": "2026-01-05T14:00:00Z"
+    },
+    {
+      "id": "trn-5",
+      "title": "Data Privacy & GDPR Compliance",
+      "description": "Annual refresher on data handling procedures, GDPR requirements, and breach notification protocols.",
+      "status": "archived",
+      "category": "Compliance",
+      "departmentId": null,
+      "thumbnailUrl": null,
+      "estimatedDurationMinutes": 20,
+      "passingScore": 85,
+      "allowRetakes": false,
+      "maxAttempts": 1,
+      "timeLimitMinutes": 25,
+      "showResults": true,
+      "recurrence": { "enabled": true, "intervalType": "months", "intervalValue": 12 },
+      "passwordProtected": false,
+      "accessPassword": null,
+      "shareableLinkToken": null,
+      "linkVisibility": "private",
+      "rulesPage": {
+        "title": "Data Privacy Training",
+        "description": "This training must be completed without interruption. You have one attempt.",
+        "customInstructions": "Do not share or screenshot any content from this training.",
+        "allowPause": false,
+        "mustCompleteInOneSitting": true,
+        "exitBehavior": "fail",
+        "lockQuizUntilSlidesComplete": true,
+        "requireMinimumVideoWatch": true,
+        "showEstimatedDuration": false,
+        "showPassingScore": true,
+        "showQuestionCount": false
+      },
+      "assignedCount": 148,
+      "completionRate": 100,
+      "lastUpdated": "2025-12-15T09:00:00Z",
+      "createdAt": "2025-06-01T10:00:00Z"
+    },
+    {
+      "id": "trn-6",
+      "title": "Customer Escalation Handling",
+      "description": "How to handle difficult customer situations, de-escalation techniques, and when to involve management.",
+      "status": "draft",
+      "category": "Skills",
+      "departmentId": "dept-4",
+      "thumbnailUrl": null,
+      "estimatedDurationMinutes": 30,
+      "passingScore": 70,
+      "allowRetakes": true,
+      "maxAttempts": null,
+      "timeLimitMinutes": null,
+      "showResults": true,
+      "recurrence": { "enabled": false, "intervalType": null, "intervalValue": null },
+      "passwordProtected": false,
+      "accessPassword": null,
+      "shareableLinkToken": null,
+      "linkVisibility": "private",
+      "rulesPage": {
+        "title": "Escalation Training",
+        "description": "Learn our framework for handling customer escalations effectively and professionally.",
+        "customInstructions": null,
+        "allowPause": true,
+        "mustCompleteInOneSitting": false,
+        "exitBehavior": "abandon",
+        "lockQuizUntilSlidesComplete": false,
+        "requireMinimumVideoWatch": false,
+        "showEstimatedDuration": true,
+        "showPassingScore": false,
+        "showQuestionCount": true
+      },
+      "assignedCount": 0,
+      "completionRate": 0,
+      "lastUpdated": "2026-03-08T11:20:00Z",
+      "createdAt": "2026-03-08T11:20:00Z"
+    }
+  ],
+  "activeTraining": {
+    "id": "trn-1",
+    "title": "Workplace Safety Fundamentals",
+    "status": "published",
+    "lastSaved": "2026-03-09T10:32:00Z",
+    "slides": [
+      {
+        "id": "sld-1",
+        "type": "text",
+        "order": 1,
+        "title": "Welcome & Overview",
+        "content": {
+          "body": "<h2>Welcome to Workplace Safety Training</h2><p>This training covers the essential safety protocols every team member must know. By the end, you'll understand emergency procedures, equipment handling, and how to report incidents.</p><p>Take your time with each section — your safety matters.</p>"
+        },
+        "settings": {
+          "requiredCompletion": true
+        }
+      },
+      {
+        "id": "sld-2",
+        "type": "video",
+        "order": 2,
+        "title": "Emergency Evacuation Procedures",
+        "content": {
+          "videoUrl": "https://example.com/videos/evacuation-procedures.mp4",
+          "embedUrl": null,
+          "title": "Emergency Evacuation Procedures",
+          "body": "Watch this video to understand our building's evacuation routes, assembly points, and the role of floor wardens."
+        },
+        "settings": {
+          "requiredCompletion": true,
+          "requiredWatch": true
+        }
+      },
+      {
+        "id": "sld-3",
+        "type": "text",
+        "order": 3,
+        "title": "Fire Extinguisher Types",
+        "content": {
+          "body": "<h2>Know Your Fire Extinguishers</h2><p>Different fire types require different extinguishers. Using the wrong type can make a fire worse.</p><ul><li><strong>Class A (Water):</strong> Paper, wood, cloth</li><li><strong>Class B (Foam/CO2):</strong> Flammable liquids</li><li><strong>Class C (CO2/Dry Chemical):</strong> Electrical fires</li><li><strong>Class K (Wet Chemical):</strong> Kitchen/cooking fires</li></ul><p>When in doubt, evacuate and let the fire department handle it.</p>"
+        },
+        "settings": {
+          "requiredCompletion": true
+        }
+      },
+      {
+        "id": "sld-4",
+        "type": "question",
+        "order": 4,
+        "title": "Quick Check: Extinguishers",
+        "content": {
+          "questionText": "Which type of fire extinguisher should you use for an electrical fire?",
+          "options": [
+            { "id": "opt-1", "text": "Class A (Water)", "isCorrect": false },
+            { "id": "opt-2", "text": "Class B (Foam)", "isCorrect": false },
+            { "id": "opt-3", "text": "Class C (CO2 or Dry Chemical)", "isCorrect": true },
+            { "id": "opt-4", "text": "Class K (Wet Chemical)", "isCorrect": false }
+          ],
+          "explanation": "Electrical fires require CO2 or dry chemical extinguishers. Water-based extinguishers can cause electrocution.",
+          "pointValue": 10
+        },
+        "settings": {
+          "requiredCompletion": true,
+          "shuffleAnswers": false
+        }
+      },
+      {
+        "id": "sld-5",
+        "type": "video",
+        "order": 5,
+        "title": "Equipment Handling Best Practices",
+        "content": {
+          "videoUrl": null,
+          "embedUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ",
+          "title": "Safe Equipment Handling",
+          "body": null
+        },
+        "settings": {
+          "requiredCompletion": false,
+          "requiredWatch": false
+        }
+      },
+      {
+        "id": "sld-6",
+        "type": "text",
+        "order": 6,
+        "title": "Incident Reporting",
+        "content": {
+          "body": "<h2>How to Report an Incident</h2><p>All workplace incidents — no matter how minor — must be reported within 24 hours.</p><h3>Steps:</h3><ol><li>Ensure the area is safe</li><li>Provide first aid if trained to do so</li><li>Notify your supervisor immediately</li><li>Fill out the Incident Report form in PeopleOS</li><li>Cooperate with any follow-up investigation</li></ol><p><em>Remember: reporting isn't about blame — it's about prevention.</em></p>"
+        },
+        "settings": {
+          "requiredCompletion": true
+        }
+      },
+      {
+        "id": "sld-7",
+        "type": "question",
+        "order": 7,
+        "title": "Quick Check: Reporting",
+        "content": {
+          "questionText": "Within what timeframe must workplace incidents be reported?",
+          "options": [
+            { "id": "opt-5", "text": "Immediately", "isCorrect": false },
+            { "id": "opt-6", "text": "Within 24 hours", "isCorrect": true },
+            { "id": "opt-7", "text": "Within 1 week", "isCorrect": false },
+            { "id": "opt-8", "text": "At the next team meeting", "isCorrect": false }
+          ],
+          "explanation": "All incidents must be reported within 24 hours, regardless of severity.",
+          "pointValue": 10
+        },
+        "settings": {
+          "requiredCompletion": true,
+          "shuffleAnswers": true
+        }
+      }
+    ],
+    "quizQuestions": [
+      {
+        "id": "qq-1",
+        "order": 1,
+        "questionText": "What is the first thing you should do when you hear the fire alarm?",
+        "options": [
+          { "id": "qo-1", "text": "Gather your personal belongings", "isCorrect": false },
+          { "id": "qo-2", "text": "Proceed to the nearest emergency exit", "isCorrect": true },
+          { "id": "qo-3", "text": "Call 911", "isCorrect": false },
+          { "id": "qo-4", "text": "Wait for instructions from your manager", "isCorrect": false }
+        ],
+        "explanation": "Always proceed to the nearest emergency exit immediately. Do not stop to collect belongings.",
+        "pointValue": 10
+      },
+      {
+        "id": "qq-2",
+        "order": 2,
+        "questionText": "Which of the following is NOT a responsibility of a floor warden?",
+        "options": [
+          { "id": "qo-5", "text": "Directing people to exits", "isCorrect": false },
+          { "id": "qo-6", "text": "Checking rooms are clear", "isCorrect": false },
+          { "id": "qo-7", "text": "Fighting fires with extinguishers", "isCorrect": true },
+          { "id": "qo-8", "text": "Accounting for personnel at the assembly point", "isCorrect": false }
+        ],
+        "explanation": "Floor wardens direct evacuations and account for personnel. Firefighting is left to trained fire response teams.",
+        "pointValue": 10
+      },
+      {
+        "id": "qq-3",
+        "order": 3,
+        "questionText": "How often should fire extinguishers be inspected?",
+        "options": [
+          { "id": "qo-9", "text": "Weekly", "isCorrect": false },
+          { "id": "qo-10", "text": "Monthly", "isCorrect": true },
+          { "id": "qo-11", "text": "Annually", "isCorrect": false },
+          { "id": "qo-12", "text": "Only after use", "isCorrect": false }
+        ],
+        "explanation": "Fire extinguishers should be visually inspected monthly and professionally serviced annually.",
+        "pointValue": 10
+      },
+      {
+        "id": "qq-4",
+        "order": 4,
+        "questionText": "When lifting heavy objects, which technique is safest?",
+        "options": [
+          { "id": "qo-13", "text": "Bend at the waist, keep legs straight", "isCorrect": false },
+          { "id": "qo-14", "text": "Bend at the knees, keep back straight", "isCorrect": true },
+          { "id": "qo-15", "text": "Twist your torso while lifting", "isCorrect": false },
+          { "id": "qo-16", "text": "Lift quickly to minimize strain", "isCorrect": false }
+        ],
+        "explanation": "Always bend at the knees and keep your back straight. Lift with your legs, not your back.",
+        "pointValue": 10
+      },
+      {
+        "id": "qq-5",
+        "order": 5,
+        "questionText": "What should you include in an incident report?",
+        "options": [
+          { "id": "qo-17", "text": "Only injuries that required medical attention", "isCorrect": false },
+          { "id": "qo-18", "text": "The names of witnesses and a detailed description of the event", "isCorrect": true },
+          { "id": "qo-19", "text": "Just the date and time", "isCorrect": false },
+          { "id": "qo-20", "text": "Only your opinion on who was at fault", "isCorrect": false }
+        ],
+        "explanation": "Incident reports should include who was involved, witnesses, what happened, when, where, and any contributing factors.",
+        "pointValue": 10
+      }
+    ]
+  }
+}
