@@ -207,3 +207,32 @@
     }
   }
 }
+
+/* Dark mode scrollbar styling */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(100, 116, 139, 0.4);
+  border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 116, 139, 0.6);
+}
+
+.dark ::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox dark scrollbar */
+.dark * {
+  scrollbar-color: rgba(100, 116, 139, 0.4) transparent;
+  scrollbar-width: thin;
+}
