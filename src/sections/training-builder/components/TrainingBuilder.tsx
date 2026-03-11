@@ -337,7 +337,7 @@ export function TrainingBuilder({
         {/* -------- RIGHT PANEL -------- */}
         <aside
           className={`
-            ${rightPanelOpen ? 'w-[320px]' : 'w-0 overflow-hidden'}
+            ${rightPanelOpen ? 'w-[336px]' : 'w-0 overflow-hidden'}
             hidden md:block
             h-full
             bg-white dark:bg-slate-900
@@ -347,7 +347,7 @@ export function TrainingBuilder({
             overflow-y-auto overflow-x-hidden
           `}
         >
-          <div className="w-[320px]">
+          <div className="w-[320px] pr-2">
             {/* Contextual slide settings */}
             {selectedSlide && centerView === 'slide' && (
               <SlideSettings
