@@ -14,7 +14,7 @@ import { UserMenu } from './UserMenu'
 export interface NavItem {
   label: string
   href: string
-  icon: LucideIcon
+  icon?: LucideIcon
   isActive?: boolean
 }
 
@@ -82,7 +82,11 @@ export function MainNav({
               {item.isActive && (
                 <div className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 rounded-r-full bg-indigo-600 dark:bg-indigo-400" />
               )}
-              <Icon className="w-[18px] h-[18px] shrink-0" strokeWidth={1.5} />
+              {Icon ? (
+                <Icon className="w-[18px] h-[18px] shrink-0" strokeWidth={1.5} />
+              ) : (
+                <div className="w-[18px] h-[18px] shrink-0" />
+              )}
               {!collapsed && <span className="truncate">{item.label}</span>}
             </button>
           )
@@ -104,7 +108,11 @@ export function MainNav({
               `}
               style={{ fontFamily: "'DM Sans', sans-serif" }}
             >
-              <Icon className="w-[18px] h-[18px] shrink-0" strokeWidth={1.5} />
+              {Icon ? (
+                <Icon className="w-[18px] h-[18px] shrink-0" strokeWidth={1.5} />
+              ) : (
+                <div className="w-[18px] h-[18px] shrink-0" />
+              )}
               {!collapsed && <span className="truncate">{item.label}</span>}
             </button>
           )

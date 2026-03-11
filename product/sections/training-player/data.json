@@ -1,0 +1,395 @@
+{
+  "_meta": {
+    "models": {
+      "employee": "The logged-in employee viewing their dashboard and taking trainings.",
+      "assignedTraining": "A training assigned to the employee with due date, status, and progress information.",
+      "completedTraining": "A training the employee has finished, stored in their archive with score and attempt data.",
+      "trainingRules": "The rules page configuration for a specific training, shown before the employee starts.",
+      "slide": "A single content unit within a training — video, text, or inline question.",
+      "quizQuestion": "A question in the final quiz with answer options and correct answer.",
+      "attemptResult": "The outcome of a completed training attempt including score, pass/fail, and timing."
+    },
+    "relationships": [
+      "Employee has many AssignedTraining and CompletedTraining",
+      "AssignedTraining references a Training and its TrainingRules",
+      "Each Training has an ordered list of Slides and QuizQuestions",
+      "CompletedTraining stores AttemptResult data for each attempt"
+    ]
+  },
+  "employee": {
+    "id": "emp-1",
+    "firstName": "Jordan",
+    "lastName": "Rivera",
+    "email": "jordan.rivera@company.com",
+    "department": "Operations",
+    "role": "Warehouse Associate",
+    "avatarUrl": null
+  },
+  "assignedTrainings": [
+    {
+      "id": "asgn-1",
+      "trainingId": "trn-1",
+      "title": "Customer Escalation Handling",
+      "description": "How to handle difficult customer situations, de-escalation techniques, and when to involve management.",
+      "category": "skills",
+      "status": "overdue",
+      "dueDate": "2026-03-08",
+      "estimatedDuration": 30,
+      "slideCount": 8,
+      "questionCount": 15,
+      "passingScore": 80,
+      "currentSlideIndex": null,
+      "maxAttempts": 3,
+      "attemptsUsed": 0
+    },
+    {
+      "id": "asgn-2",
+      "trainingId": "trn-2",
+      "title": "Workplace Safety Fundamentals",
+      "description": "Covers essential workplace safety protocols including fire exits, equipment handling, and incident reporting procedures.",
+      "category": "compliance",
+      "status": "in_progress",
+      "dueDate": "2026-03-20",
+      "estimatedDuration": 35,
+      "slideCount": 7,
+      "questionCount": 12,
+      "passingScore": 85,
+      "currentSlideIndex": 3,
+      "maxAttempts": null,
+      "attemptsUsed": 0
+    },
+    {
+      "id": "asgn-3",
+      "trainingId": "trn-3",
+      "title": "New Hire Onboarding — Q1 2026",
+      "description": "Welcome to the team! This training walks you through company values, benefits, tools, and your first-week checklist.",
+      "category": "onboarding",
+      "status": "pending",
+      "dueDate": "2026-03-25",
+      "estimatedDuration": 60,
+      "slideCount": 12,
+      "questionCount": 10,
+      "passingScore": 75,
+      "currentSlideIndex": null,
+      "maxAttempts": null,
+      "attemptsUsed": 0
+    },
+    {
+      "id": "asgn-4",
+      "trainingId": "trn-4",
+      "title": "Anti-Harassment Policy Training",
+      "description": "Mandatory training covering workplace harassment policies, reporting mechanisms, and bystander intervention strategies.",
+      "category": "compliance",
+      "status": "pending",
+      "dueDate": "2026-03-15",
+      "estimatedDuration": 25,
+      "slideCount": 9,
+      "questionCount": 8,
+      "passingScore": 90,
+      "currentSlideIndex": null,
+      "maxAttempts": 3,
+      "attemptsUsed": 0
+    }
+  ],
+  "completedTrainings": [
+    {
+      "id": "comp-1",
+      "trainingId": "trn-6",
+      "title": "New Employee Orientation",
+      "completedDate": "2026-01-15",
+      "score": 92,
+      "passed": true,
+      "attemptCount": 1
+    },
+    {
+      "id": "comp-2",
+      "trainingId": "trn-7",
+      "title": "Fire Safety Fundamentals",
+      "completedDate": "2026-02-03",
+      "score": 78,
+      "passed": true,
+      "attemptCount": 2
+    },
+    {
+      "id": "comp-3",
+      "trainingId": "trn-8",
+      "title": "Slip, Trip & Fall Prevention",
+      "completedDate": "2026-02-20",
+      "score": 100,
+      "passed": true,
+      "attemptCount": 1
+    },
+    {
+      "id": "comp-4",
+      "trainingId": "trn-9",
+      "title": "Lockout/Tagout Procedures",
+      "completedDate": "2025-12-10",
+      "score": 65,
+      "passed": false,
+      "attemptCount": 3
+    },
+    {
+      "id": "comp-5",
+      "trainingId": "trn-10",
+      "title": "Ergonomics in the Workplace",
+      "completedDate": "2025-11-22",
+      "score": 88,
+      "passed": true,
+      "attemptCount": 1
+    }
+  ],
+  "trainingRules": {
+    "trainingId": "trn-1",
+    "title": "Forklift Safety Certification",
+    "description": "Covers proper forklift operation, load handling, pedestrian awareness, and emergency procedures required for warehouse floor access.",
+    "estimatedDuration": 45,
+    "questionCount": 20,
+    "passingScore": 80,
+    "allowPause": false,
+    "mustCompleteInOneSitting": true,
+    "exitBehavior": "fail",
+    "requireMinimumVideoWatch": true,
+    "showEstimatedDuration": true,
+    "showPassingScore": true,
+    "showQuestionCount": true,
+    "customInstructions": "You must score at least 80% to receive your forklift operating permit. This certification is required before you can operate any powered industrial truck on the warehouse floor. Video segments must be watched in full.",
+    "maxAttempts": 3,
+    "retryCooldownMinutes": null
+  },
+  "slides": [
+    {
+      "id": "slide-1",
+      "trainingId": "trn-1",
+      "order": 1,
+      "type": "text",
+      "title": "Introduction to Forklift Safety",
+      "content": "Forklifts are essential tools in warehouse operations, but they're also one of the leading causes of workplace injuries. Each year, roughly 85 workers are killed and 34,900 are seriously injured in forklift-related incidents in the United States alone. This training will prepare you to operate a forklift safely and responsibly.",
+      "videoUrl": null,
+      "videoDurationSeconds": null,
+      "question": null
+    },
+    {
+      "id": "slide-2",
+      "trainingId": "trn-1",
+      "order": 2,
+      "type": "video",
+      "title": "Pre-Operation Inspection",
+      "content": null,
+      "videoUrl": "https://videos.example.com/forklift-pre-op.mp4",
+      "videoDurationSeconds": 240,
+      "question": null
+    },
+    {
+      "id": "slide-3",
+      "trainingId": "trn-1",
+      "order": 3,
+      "type": "inline_question",
+      "title": "Check Your Understanding",
+      "content": "Before operating a forklift at the start of your shift, what is the first thing you should do?",
+      "videoUrl": null,
+      "videoDurationSeconds": null,
+      "question": {
+        "id": "iq-1",
+        "text": "Before operating a forklift at the start of your shift, what is the first thing you should do?",
+        "options": [
+          "Start the engine and let it warm up",
+          "Perform a pre-operation inspection",
+          "Load the nearest pallet",
+          "Check in with your supervisor"
+        ],
+        "correctIndex": 1,
+        "explanation": "A thorough pre-operation inspection must be completed before every shift to ensure the forklift is safe to operate."
+      }
+    },
+    {
+      "id": "slide-4",
+      "trainingId": "trn-1",
+      "order": 4,
+      "type": "video",
+      "title": "Load Handling & Stability",
+      "content": null,
+      "videoUrl": "https://videos.example.com/forklift-load-handling.mp4",
+      "videoDurationSeconds": 310,
+      "question": null
+    },
+    {
+      "id": "slide-5",
+      "trainingId": "trn-1",
+      "order": 5,
+      "type": "text",
+      "title": "Pedestrian Awareness Zones",
+      "content": "Warehouse environments mix foot traffic with heavy machinery. Designated pedestrian walkways are marked with yellow floor paint. When operating near intersections, always honk your horn, slow down, and make eye contact with pedestrians before proceeding. Never assume a pedestrian has seen you — always yield.",
+      "videoUrl": null,
+      "videoDurationSeconds": null,
+      "question": null
+    },
+    {
+      "id": "slide-6",
+      "trainingId": "trn-1",
+      "order": 6,
+      "type": "inline_question",
+      "title": "Quick Check",
+      "content": "When approaching a blind intersection in the warehouse, what should you do?",
+      "videoUrl": null,
+      "videoDurationSeconds": null,
+      "question": {
+        "id": "iq-2",
+        "text": "When approaching a blind intersection in the warehouse, what should you do?",
+        "options": [
+          "Speed up to clear the intersection quickly",
+          "Honk, slow down, and check for pedestrians",
+          "Stop and wait for someone to wave you through",
+          "Flash your lights twice"
+        ],
+        "correctIndex": 1,
+        "explanation": "Always honk your horn, reduce speed, and visually check for pedestrians before proceeding through any intersection."
+      }
+    },
+    {
+      "id": "slide-7",
+      "trainingId": "trn-1",
+      "order": 7,
+      "type": "video",
+      "title": "Emergency Procedures",
+      "content": null,
+      "videoUrl": "https://videos.example.com/forklift-emergency.mp4",
+      "videoDurationSeconds": 195,
+      "question": null
+    },
+    {
+      "id": "slide-8",
+      "trainingId": "trn-1",
+      "order": 8,
+      "type": "text",
+      "title": "Tip-Over Prevention",
+      "content": "Forklift tip-overs account for roughly 25% of all forklift-related fatalities. Key prevention measures: never exceed the rated load capacity, keep loads low and tilted back during travel, avoid sharp turns at speed, and never operate on slopes exceeding the rated grade. If a tip-over occurs, stay in the seat, grip the wheel firmly, brace your feet, and lean away from the direction of the fall. Never attempt to jump from a tipping forklift.",
+      "videoUrl": null,
+      "videoDurationSeconds": null,
+      "question": null
+    }
+  ],
+  "quizQuestions": [
+    {
+      "id": "qq-1",
+      "trainingId": "trn-1",
+      "order": 1,
+      "text": "How often should a pre-operation inspection be performed on a forklift?",
+      "options": [
+        "Once a week",
+        "Once a month",
+        "At the start of each shift",
+        "Only when a problem is noticed"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "qq-2",
+      "trainingId": "trn-1",
+      "order": 2,
+      "text": "What is the maximum safe speed for a forklift in a pedestrian area?",
+      "options": [
+        "15 mph",
+        "5 mph",
+        "10 mph",
+        "Walking speed or as posted"
+      ],
+      "correctIndex": 3
+    },
+    {
+      "id": "qq-3",
+      "trainingId": "trn-1",
+      "order": 3,
+      "text": "What should you do if your forklift begins to tip over?",
+      "options": [
+        "Jump clear of the forklift",
+        "Stay seated, grip the wheel, brace feet, lean away from the fall",
+        "Try to counterbalance by shifting your weight",
+        "Apply the brakes hard"
+      ],
+      "correctIndex": 1
+    },
+    {
+      "id": "qq-4",
+      "trainingId": "trn-1",
+      "order": 4,
+      "text": "When traveling with a load, how should the forks be positioned?",
+      "options": [
+        "Raised as high as possible for visibility",
+        "Level with the ground",
+        "Lowered 4-6 inches from the floor, tilted slightly back",
+        "Fully extended forward"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "qq-5",
+      "trainingId": "trn-1",
+      "order": 5,
+      "text": "Who is responsible for ensuring pedestrians are clear before moving a forklift?",
+      "options": [
+        "The warehouse manager",
+        "The pedestrians themselves",
+        "The forklift operator",
+        "The safety officer"
+      ],
+      "correctIndex": 2
+    },
+    {
+      "id": "qq-6",
+      "trainingId": "trn-1",
+      "order": 6,
+      "text": "What percentage of forklift fatalities are caused by tip-overs?",
+      "options": [
+        "10%",
+        "25%",
+        "50%",
+        "40%"
+      ],
+      "correctIndex": 1
+    }
+  ],
+  "attemptResult": {
+    "id": "att-1",
+    "trainingId": "trn-1",
+    "employeeId": "emp-1",
+    "attemptNumber": 1,
+    "startedAt": "2026-03-11T09:15:00Z",
+    "completedAt": "2026-03-11T10:02:34Z",
+    "totalTimeSeconds": 2854,
+    "score": 83,
+    "passed": true,
+    "questionsCorrect": 5,
+    "questionsTotal": 6,
+    "exitedMidAttempt": false,
+    "showDetailedResults": true,
+    "answers": [
+      { "questionId": "qq-1", "selectedIndex": 2, "correct": true, "timeSeconds": 12 },
+      { "questionId": "qq-2", "selectedIndex": 3, "correct": true, "timeSeconds": 18 },
+      { "questionId": "qq-3", "selectedIndex": 1, "correct": true, "timeSeconds": 9 },
+      { "questionId": "qq-4", "selectedIndex": 2, "correct": true, "timeSeconds": 15 },
+      { "questionId": "qq-5", "selectedIndex": 2, "correct": true, "timeSeconds": 8 },
+      { "questionId": "qq-6", "selectedIndex": 0, "correct": false, "timeSeconds": 22 }
+    ],
+    "slideTimings": [
+      { "slideId": "slide-1", "timeSeconds": 45 },
+      { "slideId": "slide-2", "timeSeconds": 252 },
+      { "slideId": "slide-3", "timeSeconds": 30 },
+      { "slideId": "slide-4", "timeSeconds": 325 },
+      { "slideId": "slide-5", "timeSeconds": 60 },
+      { "slideId": "slide-6", "timeSeconds": 22 },
+      { "slideId": "slide-7", "timeSeconds": 210 },
+      { "slideId": "slide-8", "timeSeconds": 55 }
+    ]
+  },
+  "playerState": {
+    "trainingId": "trn-1",
+    "currentSlideIndex": 4,
+    "totalSlides": 8,
+    "timerStartedAt": "2026-03-11T09:15:00Z",
+    "elapsedSeconds": 652,
+    "isPaused": false,
+    "allowPause": false,
+    "quizUnlocked": false,
+    "quizLayout": "one_at_a_time"
+  }
+}

@@ -1,30 +1,36 @@
 # Application Shell Specification
 
 ## Overview
-PeopleOS uses a left sidebar navigation pattern optimized for desktop-first admin workflows. The sidebar contains all primary navigation items, settings at the bottom, and a user menu pinned to the bottom. The layout is dense and operational — minimal chrome, maximum content area.
+PeopleOS uses a standalone page pattern with back-button navigation for all primary sections. Each major view (Training Builder, Training Player, Question Bank, Analytics, Settings) is a full-screen standalone page with its own top header bar containing a back button, breadcrumb, and contextual actions. There is no persistent sidebar for page-level navigation.
 
 ## Navigation Structure
-- Dashboard → Home / landing view
-- Training Builder → Admin training editor
-- Training Player → Employee training flow
-- Question Bank → Question management and import
-- Analytics → Training performance dashboards
-- Settings → App and account configuration (bottom section)
+All primary sections use standalone top-bar navigation with back buttons:
+- Training Builder → Admin training editor (standalone, back button)
+- Training Player / Employee Dashboard → Employee training flow (standalone, back button)
+- Question Bank → Question management and import (standalone, back button)
+- Analytics → Training performance dashboards (standalone, back button)
+- Settings → App and account configuration (standalone, back button)
+
+## Top Bar Pattern
+Each standalone page has a thin top header bar (48px height) containing:
+- Back button (left) → Returns to previous view or home
+- Breadcrumb → Section icon + section name + page name
+- Contextual actions (right) → Preview, Publish, Fullscreen, etc.
 
 ## User Menu
-Pinned to the bottom of the sidebar. Shows user avatar (initials fallback), display name, and a dropdown with profile and logout options.
+User information is shown contextually within each standalone page rather than in a persistent sidebar.
 
 ## Layout Pattern
-Fixed-width left sidebar (256px expanded, 64px collapsed) with a fluid content area. No top header bar — the sidebar owns all navigation chrome. Content area fills remaining viewport width and scrolls independently.
+Full-screen standalone pages with a top header bar. Content area fills the entire viewport below the header and scrolls independently. No persistent sidebar.
 
 ## Responsive Behavior
-- **Desktop (≥1024px):** Full sidebar with icons and labels, 256px wide
-- **Tablet (768px–1023px):** Collapsed sidebar showing icons only, 64px wide, with tooltips on hover
-- **Mobile (<768px):** Sidebar hidden, hamburger icon in top-left opens a slide-over drawer overlay
+- **Desktop (≥1024px):** Full-width content with generous horizontal padding
+- **Tablet (768px–1023px):** Full-width content with moderate padding
+- **Mobile (<768px):** Full-width content with compact padding, hamburger menu for mobile navigation if needed
 
 ## Design Notes
-- Sidebar background uses slate-900 in dark mode, white with slate-100 border in light mode
-- Active nav item highlighted with indigo-500 accent (left border or background tint)
-- Icons from lucide-react for all nav items
-- Smooth transition between expanded and collapsed states
-- Content area has a subtle top bar on mobile only (hamburger + page title)
+- Top bar background uses slate-900 in dark mode with slate-800 border
+- Back button uses slate-400 icons with hover state
+- Breadcrumb text uses slate-400 for section, slate-200 for current page
+- Content area uses slate-950 background in dark mode
+- DM Sans font family throughout
