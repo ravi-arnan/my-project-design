@@ -1,0 +1,322 @@
+{
+  "_meta": {
+    "models": {
+      "category": "A single-level grouping for organizing questions by topic area (e.g. Fire Safety, HR Policy).",
+      "bankQuestion": "A reusable question stored in the centralized question bank. Includes question text, type, options, correct answer, explanation, category, tags, and usage tracking.",
+      "questionUsage": "A record of a training that has a snapshot copy of a bank question, including training name, when it was copied, and training status.",
+      "importSession": "A bulk CSV import session showing upload status, parsed row count, error count, and step progress.",
+      "importRow": "A single parsed row from a CSV import with validation status and inline-editable fields."
+    },
+    "relationships": [
+      "Category has many BankQuestion",
+      "BankQuestion has many QuestionUsage",
+      "ImportSession has many ImportRow"
+    ]
+  },
+  "categories": [
+    { "id": "cat-1", "name": "Fire Safety", "questionCount": 14 },
+    { "id": "cat-2", "name": "HR Policy", "questionCount": 9 },
+    { "id": "cat-3", "name": "Equipment Operation", "questionCount": 22 },
+    { "id": "cat-4", "name": "First Aid", "questionCount": 7 },
+    { "id": "cat-5", "name": "Workplace Ergonomics", "questionCount": 5 },
+    { "id": "cat-6", "name": "Hazardous Materials", "questionCount": 11 }
+  ],
+  "bankQuestions": [
+    {
+      "id": "bq-1",
+      "questionText": "What is the first step you should take upon discovering a fire in the workplace?",
+      "type": "multiple_choice",
+      "options": [
+        "Attempt to extinguish it immediately",
+        "Activate the nearest fire alarm pull station",
+        "Call your supervisor",
+        "Open windows to ventilate smoke"
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "Activating the fire alarm alerts all building occupants and triggers emergency response protocols before any other action.",
+      "categoryId": "cat-1",
+      "category": "Fire Safety",
+      "tags": ["emergency-response", "fire-alarm"],
+      "usageCount": 4,
+      "createdAt": "2025-09-12T14:30:00Z",
+      "updatedAt": "2026-01-08T09:15:00Z"
+    },
+    {
+      "id": "bq-2",
+      "questionText": "A portable fire extinguisher should be used only when the fire is small and contained.",
+      "type": "true_false",
+      "options": ["True", "False"],
+      "correctAnswerIndex": 0,
+      "explanation": "Portable extinguishers are designed for incipient-stage fires only. If the fire has spread beyond its point of origin, evacuate immediately.",
+      "categoryId": "cat-1",
+      "category": "Fire Safety",
+      "tags": ["extinguisher", "evacuation"],
+      "usageCount": 3,
+      "createdAt": "2025-09-12T14:35:00Z",
+      "updatedAt": "2025-09-12T14:35:00Z"
+    },
+    {
+      "id": "bq-3",
+      "questionText": "Which of the following is NOT considered workplace harassment under federal guidelines?",
+      "type": "multiple_choice",
+      "options": [
+        "Repeated unwelcome comments about appearance",
+        "A single performance-related criticism from a manager",
+        "Displaying offensive images in a shared workspace",
+        "Sending threatening messages via company email"
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "Performance-related feedback from a supervisor, even if uncomfortable, is not harassment. Harassment requires conduct that is unwelcome and based on a protected characteristic.",
+      "categoryId": "cat-2",
+      "category": "HR Policy",
+      "tags": ["harassment", "federal-guidelines"],
+      "usageCount": 2,
+      "createdAt": "2025-10-03T11:20:00Z",
+      "updatedAt": "2026-02-14T16:45:00Z"
+    },
+    {
+      "id": "bq-4",
+      "questionText": "Before operating a forklift at the start of a shift, the operator must complete a pre-operation inspection.",
+      "type": "true_false",
+      "options": ["True", "False"],
+      "correctAnswerIndex": 0,
+      "explanation": "OSHA requires a pre-operation inspection at the beginning of each shift to identify mechanical issues before use.",
+      "categoryId": "cat-3",
+      "category": "Equipment Operation",
+      "tags": ["forklift", "osha", "inspection"],
+      "usageCount": 6,
+      "createdAt": "2025-08-20T08:00:00Z",
+      "updatedAt": "2026-01-22T13:30:00Z"
+    },
+    {
+      "id": "bq-5",
+      "questionText": "What is the maximum load capacity you should lift with a standard pallet jack?",
+      "type": "multiple_choice",
+      "options": [
+        "2,500 lbs",
+        "5,500 lbs",
+        "Refer to the specific model's rated capacity on the data plate",
+        "10,000 lbs"
+      ],
+      "correctAnswerIndex": 2,
+      "explanation": "Load capacity varies by model and manufacturer. Always check the data plate on the specific equipment you're operating — never assume a universal limit.",
+      "categoryId": "cat-3",
+      "category": "Equipment Operation",
+      "tags": ["pallet-jack", "load-capacity"],
+      "usageCount": 1,
+      "createdAt": "2025-11-15T10:10:00Z",
+      "updatedAt": "2025-11-15T10:10:00Z"
+    },
+    {
+      "id": "bq-6",
+      "questionText": "When performing CPR on an adult, what is the recommended compression-to-breath ratio?",
+      "type": "multiple_choice",
+      "options": [
+        "15:2",
+        "30:2",
+        "20:1",
+        "10:2"
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "The American Heart Association recommends 30 chest compressions followed by 2 rescue breaths for adult CPR.",
+      "categoryId": "cat-4",
+      "category": "First Aid",
+      "tags": ["cpr", "aha-guidelines"],
+      "usageCount": 0,
+      "createdAt": "2026-01-30T15:45:00Z",
+      "updatedAt": "2026-01-30T15:45:00Z"
+    },
+    {
+      "id": "bq-7",
+      "questionText": "Which of the following best describes the correct seated posture for prolonged computer work?",
+      "type": "multiple_choice",
+      "options": [
+        "Feet flat on the floor, monitor at eye level, elbows at 90 degrees",
+        "Legs crossed, screen tilted upward, wrists resting on keyboard",
+        "Leaning forward with arms extended, monitor below eye level",
+        "Reclined at 45 degrees with monitor overhead"
+      ],
+      "correctAnswerIndex": 0,
+      "explanation": "Proper ergonomic posture minimizes strain: feet flat, thighs parallel to floor, monitor at arm's length with top of screen at or just below eye level, elbows bent at approximately 90 degrees.",
+      "categoryId": "cat-5",
+      "category": "Workplace Ergonomics",
+      "tags": ["posture", "computer-work", "desk-setup"],
+      "usageCount": 2,
+      "createdAt": "2025-12-05T09:30:00Z",
+      "updatedAt": "2025-12-05T09:30:00Z"
+    },
+    {
+      "id": "bq-8",
+      "questionText": "Safety Data Sheets (SDS) must be accessible to employees who work with or near hazardous chemicals.",
+      "type": "true_false",
+      "options": ["True", "False"],
+      "correctAnswerIndex": 0,
+      "explanation": "Under OSHA's Hazard Communication Standard (HCS), employers must ensure SDS are readily accessible during each work shift to employees who may be exposed to hazardous chemicals.",
+      "categoryId": "cat-6",
+      "category": "Hazardous Materials",
+      "tags": ["sds", "osha", "hcs"],
+      "usageCount": 5,
+      "createdAt": "2025-07-18T12:00:00Z",
+      "updatedAt": "2026-03-01T10:20:00Z"
+    },
+    {
+      "id": "bq-9",
+      "questionText": "What does the NFPA 704 diamond's blue section indicate?",
+      "type": "multiple_choice",
+      "options": [
+        "Flammability hazard",
+        "Health hazard",
+        "Reactivity hazard",
+        "Special hazard"
+      ],
+      "correctAnswerIndex": 1,
+      "explanation": "The blue section of the NFPA 704 diamond indicates health hazards, rated 0-4 based on severity of health risk upon exposure.",
+      "categoryId": "cat-6",
+      "category": "Hazardous Materials",
+      "tags": ["nfpa", "labeling", "health-hazard"],
+      "usageCount": 3,
+      "createdAt": "2025-08-02T14:15:00Z",
+      "updatedAt": "2025-08-02T14:15:00Z"
+    },
+    {
+      "id": "bq-10",
+      "questionText": "An employee who witnesses harassment but is not the direct target has no obligation to report it.",
+      "type": "true_false",
+      "options": ["True", "False"],
+      "correctAnswerIndex": 1,
+      "explanation": "Most company policies and many jurisdictions require bystanders to report witnessed harassment. Failing to report can perpetuate a hostile work environment and may carry disciplinary consequences.",
+      "categoryId": "cat-2",
+      "category": "HR Policy",
+      "tags": ["harassment", "bystander", "reporting"],
+      "usageCount": 2,
+      "createdAt": "2025-10-03T11:40:00Z",
+      "updatedAt": "2025-10-03T11:40:00Z"
+    }
+  ],
+  "questionUsages": {
+    "bq-1": [
+      { "trainingId": "t-1", "trainingTitle": "Forklift Safety Certification", "copiedAt": "2025-10-01T09:00:00Z", "trainingStatus": "active" },
+      { "trainingId": "t-2", "trainingTitle": "Warehouse New Hire Orientation", "copiedAt": "2025-11-20T14:00:00Z", "trainingStatus": "active" },
+      { "trainingId": "t-5", "trainingTitle": "Annual Fire Drill Review", "copiedAt": "2026-01-08T09:15:00Z", "trainingStatus": "draft" },
+      { "trainingId": "t-8", "trainingTitle": "Q4 Safety Refresher", "copiedAt": "2025-12-15T11:00:00Z", "trainingStatus": "archived" }
+    ],
+    "bq-4": [
+      { "trainingId": "t-1", "trainingTitle": "Forklift Safety Certification", "copiedAt": "2025-08-25T10:00:00Z", "trainingStatus": "active" },
+      { "trainingId": "t-2", "trainingTitle": "Warehouse New Hire Orientation", "copiedAt": "2025-11-20T14:05:00Z", "trainingStatus": "active" },
+      { "trainingId": "t-3", "trainingTitle": "Equipment Operator Recertification", "copiedAt": "2025-09-10T08:30:00Z", "trainingStatus": "active" },
+      { "trainingId": "t-6", "trainingTitle": "Dock Safety Essentials", "copiedAt": "2026-01-22T13:30:00Z", "trainingStatus": "active" },
+      { "trainingId": "t-7", "trainingTitle": "Seasonal Temp Safety Brief", "copiedAt": "2025-11-01T07:45:00Z", "trainingStatus": "archived" },
+      { "trainingId": "t-8", "trainingTitle": "Q4 Safety Refresher", "copiedAt": "2025-12-15T11:05:00Z", "trainingStatus": "archived" }
+    ],
+    "bq-6": []
+  },
+  "importSession": {
+    "id": "imp-1",
+    "fileName": "q4-safety-questions.csv",
+    "fileSize": "24.3 KB",
+    "uploadedAt": "2026-03-10T16:30:00Z",
+    "totalRows": 8,
+    "validRows": 6,
+    "errorRows": 2,
+    "step": "review",
+    "rows": [
+      {
+        "rowNumber": 1,
+        "questionText": "What class of fire extinguisher is used for electrical fires?",
+        "type": "multiple_choice",
+        "options": ["Class A", "Class B", "Class C", "Class D"],
+        "correctAnswerIndex": 2,
+        "explanation": "Class C extinguishers are rated for fires involving energized electrical equipment.",
+        "tags": "fire-safety, extinguisher",
+        "status": "valid",
+        "errors": []
+      },
+      {
+        "rowNumber": 2,
+        "questionText": "All employees must complete fire safety training within 30 days of hire.",
+        "type": "true_false",
+        "options": ["True", "False"],
+        "correctAnswerIndex": 0,
+        "explanation": "Company policy requires fire safety completion within the first 30 calendar days.",
+        "tags": "fire-safety, onboarding",
+        "status": "valid",
+        "errors": []
+      },
+      {
+        "rowNumber": 3,
+        "questionText": "",
+        "type": "multiple_choice",
+        "options": ["Option A", "Option B", "Option C"],
+        "correctAnswerIndex": 0,
+        "explanation": "",
+        "tags": "hazmat",
+        "status": "error",
+        "errors": ["Question text is required", "Multiple choice requires at least 4 options"]
+      },
+      {
+        "rowNumber": 4,
+        "questionText": "Which PPE is required when handling corrosive chemicals?",
+        "type": "multiple_choice",
+        "options": ["Safety glasses only", "Gloves and safety glasses", "Full face shield, chemical-resistant gloves, and apron", "No PPE required if exposure is brief"],
+        "correctAnswerIndex": 2,
+        "explanation": "Corrosive chemicals require maximum skin and eye protection including face shield, chemical-resistant gloves, and a protective apron at minimum.",
+        "tags": "hazmat, ppe",
+        "status": "valid",
+        "errors": []
+      },
+      {
+        "rowNumber": 5,
+        "questionText": "The buddy system should be used when working in confined spaces.",
+        "type": "true_false",
+        "options": ["True", "False"],
+        "correctAnswerIndex": 0,
+        "explanation": "OSHA confined space entry procedures require at minimum an attendant stationed outside the space.",
+        "tags": "confined-space, osha",
+        "status": "valid",
+        "errors": []
+      },
+      {
+        "rowNumber": 6,
+        "questionText": "How frequently should emergency eyewash stations be inspected?",
+        "type": "multiple_choice",
+        "options": ["Daily", "Weekly", "Monthly", "Annually"],
+        "correctAnswerIndex": 1,
+        "explanation": "ANSI Z358.1 requires weekly activation checks for plumbed eyewash stations to ensure proper function and water quality.",
+        "tags": "first-aid, eyewash",
+        "status": "valid",
+        "errors": []
+      },
+      {
+        "rowNumber": 7,
+        "questionText": "What is the proper way to lift a heavy object from the floor?",
+        "type": "multiple_choce",
+        "options": ["Bend at the waist", "Squat with knees bent, keep back straight", "Twist and pull upward", "Use one arm for leverage"],
+        "correctAnswerIndex": 1,
+        "explanation": "Proper lifting technique involves squatting with bent knees, keeping the back straight, and lifting with the legs.",
+        "tags": "ergonomics, lifting",
+        "status": "error",
+        "errors": ["Invalid question type: 'multiple_choce'. Must be 'multiple_choice' or 'true_false'"]
+      },
+      {
+        "rowNumber": 8,
+        "questionText": "Lockout/tagout procedures apply only to electrical equipment.",
+        "type": "true_false",
+        "options": ["True", "False"],
+        "correctAnswerIndex": 1,
+        "explanation": "LOTO applies to all forms of hazardous energy including electrical, mechanical, hydraulic, pneumatic, chemical, and thermal.",
+        "tags": "loto, energy-control",
+        "status": "valid",
+        "errors": []
+      }
+    ]
+  },
+  "bankStats": {
+    "totalQuestions": 68,
+    "multipleChoice": 45,
+    "trueFalse": 23,
+    "totalCategories": 6,
+    "questionsUsedInTrainings": 52,
+    "unusedQuestions": 16,
+    "lastImportDate": "2026-03-10T16:30:00Z"
+  }
+}

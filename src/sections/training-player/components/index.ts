@@ -1,3 +1,7 @@
 export { EmployeeDashboard } from './EmployeeDashboard'
 export { TrainingCard } from './TrainingCard'
 export { CompletedTrainingRow } from './CompletedTrainingRow'
+export { TrainingRulesPage } from './TrainingRulesPage'
+export { SlidePlayer } from './SlidePlayer'
+export { QuizScreen } from './QuizScreen'
+export { ResultsScreen } from './ResultsScreen'
